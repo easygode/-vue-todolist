@@ -1,18 +1,38 @@
 'use strict';
 
-const {createApp} = Vue;
+const { createApp } = Vue;
 
-const myApp = createApp({
-    data(){
-        return{
-
-            }
-        
-
-        methods: {
-
+createApp({
+    data() {
+        return {
+            todoList: "",
+            list: [
+                {
+                    text: "Do the groceries",
+                    done: true,
+                },
+                {
+                    text: "Pick up kids at school",
+                    done: true,
+                },
+                {
+                    text: "Learn Vue.js",
+                    done: true,
+                }
+            ]
         }
-    }
-})
+    },
+    methods: {
 
-myApp.mount('#app');
+        addTodoList() {
+            if (this.todoList.trim().toLowerCase() !== "" ) {
+                this.toDoList.push({text: this.todoList, done: ""});
+                this.todoList = "";
+            }
+        },
+
+        resetList(element) {
+            this.list.splice(element, 1)
+        },
+    }
+}).mount("#app")

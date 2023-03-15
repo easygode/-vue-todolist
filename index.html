@@ -12,18 +12,43 @@
     <!--/Font Awesome-->
     <title>To Do List</title>
 </head>
-<body>
-    <main>
-        <div id="app">
-            
-        </div>
-    </main>
+    <body>
+        <div id="app" v-cloak>
+            <header>
+                <div class="container py-5">
+                    <h1 class="mt-4">Todo List</h1>
+                </div>
+            </header>
+  
+            <main>
+                <div class="container d-flex align-items-center">
+                    <div class="todo">
+                        <div class="input-group mb-3">
+                        <input type="text" class="form-control ms-type-bar" v-model="todoList" @keyup.enter="addTodoList" placeholder="To Do ..." aria-label="Recipient's username" aria-describedby="button-addon2">
+                        <button class="btn btn-outline-secondary ms-type-btn" @click="addTodoList" type="button" id="button-addon2">Add!</button>
+                    </div>
+                    <ul class="list-group">
+                        <li class="list-group-item ms-li d-flex justify-content-between align-items-center" v-for="(todo, index) in list">
+                            <span @click="crossDone(todo)" :class="{ taskDone : todo.done }">{{ todo.text }}</span>
+                            <div class="cancel-ctn">
+                            <i class="fa-solid fa-xmark" @click=" resetList(todo)"></i>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </main>
+  
+    </div>
+        <!-- JavaScript Bootstrap  -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+        <!-- /JavaScript Bootstrap  -->
 
-      <!--JavaScript-->
-      <script src="js/main.js"></script>
-      <!--/JavaScript-->
-      <!--Bootstrap JavaScript-->
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
-      <!--/Bootstrap JavaScript-->
+        <!-- JavaScript Vue.js -->
+        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+        <!-- /JavaScript Vue.js -->
+
+        <!-- My Javascript -->
+        <script src="js/main.js"></script>
+        <!--/My JavaScript-->
     </body>
 </html>
